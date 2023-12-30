@@ -1,0 +1,1 @@
+export type ExtractCallSignature<T> = T extends (...args: infer P) => infer R ? (...args: P) => R : never
