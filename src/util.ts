@@ -1,4 +1,4 @@
-import { TPath, TRecipeAction, TInternalCallableActionType } from './types'
+import { TPath, TRecipeAction, TInternalCallableActionType } from './types.factory'
 
 export const isArray = <T>(value: unknown): value is Array<T> => {
     if (Array.isArray(value)) {

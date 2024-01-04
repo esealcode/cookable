@@ -1,6 +1,6 @@
 import { isArray, isObject, spreadObjectOrArray, stringifyPath, stringifyRecipeInstructionPath } from './util'
-import { TPath, TRecipeAction } from './types'
-import { PREDICATE_REJECT, INTERNAL_ARRAY_CALLABLE_PROPERTIES } from './constant'
+import { TPath, TRecipeAction } from './types.factory'
+import { PREDICATE_REJECT_SYMBOL, INTERNAL_ARRAY_CALLABLE_PROPERTIES } from './constant'
 
 export const cook = <S>(recipe: TRecipeAction[], state: S, path: TPath): S => {
     if (recipe.length === 0) {
@@ -24,7 +24,7 @@ export const cook = <S>(recipe: TRecipeAction[], state: S, path: TPath): S => {
 
     if (action.type === 'guard') {
         // @warn: If the guard fails, the update cannot occur as any further calls are unsafe
-        if (action.guard(next, '__@@PREDICATE_REJECT') === PREDICATE_REJECT) return next
+        if (action.guard(next, PREDICATE_REJECT_SYMBOL) === PREDICATE_REJECT_SYMBOL) return next
 
         return cook(recipe.slice(1), next, path)
     }
@@ -46,7 +46,7 @@ export const cook = <S>(recipe: TRecipeAction[], state: S, path: TPath): S => {
 
         if (action.type === 'select') {
             next.forEach((value, index) => {
-                if (action.predicate(value, '__@@PREDICATE_REJECT', index) === PREDICATE_REJECT) return
+                if (action.predicate(value, PREDICATE_REJECT_SYMBOL, index) === PREDICATE_REJECT_SYMBOL) return
 
                 next[index] = cook(recipe.slice(1), spreadObjectOrArray(next[index]), [...path, index])
             })
@@ -69,7 +69,7 @@ export const cook = <S>(recipe: TRecipeAction[], state: S, path: TPath): S => {
         }
 
         if (action.type === 'selectOnce') {
-            const index = next.findIndex((value, index) => action.predicate(value, '__@@PREDICATE_REJECT', index) !== PREDICATE_REJECT)
+            const index = next.findIndex((value, index) => action.predicate(value, PREDICATE_REJECT_SYMBOL, index) !== PREDICATE_REJECT_SYMBOL)
 
             if (index === -1) {
                 throw new Error(`Cannot find value in array at ${stringifyPath(path)}`)
