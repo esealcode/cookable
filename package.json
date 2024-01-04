@@ -5,6 +5,7 @@
   "version": "0.0.3",
   "description": "Cook your state with immutability in mind.",
   "main": "lib/index.js",
+  "types": "index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/esealcode/cookable.git"
