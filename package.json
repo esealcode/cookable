@@ -4,7 +4,7 @@
   "type": "module",
   "version": "0.0.1",
   "description": "Cook your state with immutability in mind.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/esealcode/cookable.git"
@@ -16,7 +16,8 @@
   },
   "homepage": "https://github.com/esealcode/cookable#readme",
   "scripts": {
-    "test": "bun test --watch"
+    "test": "bun test --watch",
+    "build": "bun build ./src/index.ts --outdir ./lib"
   },
   "devDependencies": {
     "bun-types": "latest"
