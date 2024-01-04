@@ -2,7 +2,7 @@
   "name": "@erwan.j/cookable",
   "module": "src/index.ts",
   "type": "module",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Cook your state with immutability in mind.",
   "main": "lib/index.js",
   "types": "index.d.ts",
