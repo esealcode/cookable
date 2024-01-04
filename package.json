@@ -1,7 +1,20 @@
 {
-  "name": "cookable",
+  "name": "@erwan.j/cookable",
   "module": "src/index.ts",
   "type": "module",
+  "version": "0.0.1",
+  "description": "Cook your state with immutability in mind.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esealcode/cookable.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/esealcode/cookable/issues"
+  },
+  "homepage": "https://github.com/esealcode/cookable#readme",
   "scripts": {
     "test": "bun test --watch"
   },
